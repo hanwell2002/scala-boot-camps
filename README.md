@@ -1,6 +1,6 @@
 # scala-boot-camps
 
-echo "# scala-get-started" >> README.md
+echo "# scala-boot-camps" >> README.md
 
 git init
 
