@@ -89,7 +89,7 @@ object Main extends App {
 
   for(country <- soa) {
     indexS += 1
-    println(s"$indexS - South amerias:  ${country.code},  ${country.name}, ${country.continent}")
+    println(s"$indexS - South America:  ${country.code},  ${country.name}, ${country.continent}")
   }
 
   logger.info(">> *** Completed Normally! ***")
