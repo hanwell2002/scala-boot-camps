@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
 lazy val _slf4jApiVersion = "2.0.5"
 lazy val _postgresJDBCVersion = "42.5.1"
 //lazy val _logbackVersion = "1.4.5"   /*latest*/
-lazy val _logbackVersion = "1.2.1"
+lazy val _logbackVersion = "1.2.3"
 
 libraryDependencies ++= Seq(
   "org.scalikejdbc" %% "scalikejdbc" % "4.0.0",

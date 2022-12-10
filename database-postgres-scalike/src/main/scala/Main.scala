@@ -32,11 +32,9 @@ object Main extends App {
   val cities: List[Map[String, Any]] = sql"SELECT * FROM city".map(_.toMap).list.apply()
   //cities.foreach(println)
 
-
   val ctys: List[Map[String, Any]] = sql"SELECT * FROM country".map(_.toMap).list.apply()
 
   //cities.foreach(println)
-  //
   // -----------------------------------------------------
   case class Country(
                       code: String,
@@ -58,36 +56,38 @@ object Main extends App {
 
   object Country extends SQLSyntaxSupport[Country] {
     override val tableName = "country"
+
     def apply(rs: WrappedResultSet) = new Country(
       rs.string("code")
-      ,rs.string("name")
-      ,rs.string("continent")
-      ,rs.string("region")
-      ,rs.float("surfacearea")
-      ,rs.intOpt("indepyear")
-      ,rs.int("population")
-      ,rs.floatOpt("lifeexpectancy")
-      ,rs.int("gnp")
-      ,rs.intOpt("gnpold")
-      ,rs.string("localname")
-      ,rs.string("governmentform")
-      ,rs.stringOpt("headofstate")
-      ,rs.intOpt("capital")
-      ,rs.string("code2")
+      , rs.string("name")
+      , rs.string("continent")
+      , rs.string("region")
+      , rs.float("surfacearea")
+      , rs.intOpt("indepyear")
+      , rs.int("population")
+      , rs.floatOpt("lifeexpectancy")
+      , rs.int("gnp")
+      , rs.intOpt("gnpold")
+      , rs.string("localname")
+      , rs.string("governmentform")
+      , rs.stringOpt("headofstate")
+      , rs.intOpt("capital")
+      , rs.string("code2")
     )
   }
 
-
- // val ctys: List[Map[String, Any]] = sql"SELECT * FROM country".map(_.toMap).list.apply()
+  // val ctys: List[Map[String, Any]] = sql"SELECT * FROM country".map(_.toMap).list.apply()
   val countrie: List[Country] = sql"SELECT * FROM country".map(rs => Country(rs)).list.apply()
   println("######################################")
   // countrie.foreach(println)
   println("######################################")
 
-  val soa = countrie.filter(_.continent=="South America")
+  val soa = countrie.filter(_.continent == "South America")
+  val country_num = soa.length
+  println(">>>>>>>>>>>>>>Sour America Country Number: " + country_num)
   var indexS = 0
 
-  for(country <- soa) {
+  for (country <- soa) {
     indexS += 1
     println(s"$indexS - South America:  ${country.code},  ${country.name}, ${country.continent}")
   }
@@ -96,5 +96,4 @@ object Main extends App {
   // Main$ - >> *** Completed Normally! ***
 
   println("\n*** Application completed Normally ***")
-
 }
