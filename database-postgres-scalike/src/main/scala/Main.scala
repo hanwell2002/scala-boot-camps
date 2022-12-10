@@ -19,7 +19,7 @@ object Main extends App {
 
   logger.debug("Created logger.")
   // Class.forName("org.postgresql.Driver")
-  ConnectionPool.singleton("jdbc:postgresql://localhost:5432/postgres", "postgres", "Admin$777")
+  ConnectionPool.singleton("jdbc:postgresql://localhost:5432/postgres", "postgres", "MY_PASSWORD")
   logger.debug("Setup Connection Pool")
 
   implicit val session = AutoSession
