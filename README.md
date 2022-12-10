@@ -10,7 +10,7 @@ git commit -m "Initial commit"
 
 git branch -M main
 
-git remote add origin git@github.com:hanwell2002/scala-get-started.git
+git remote add origin git@github.com:hanwell2002/scala-boot-camps.git
 
 git push -u origin main
 
