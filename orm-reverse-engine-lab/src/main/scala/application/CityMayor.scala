@@ -35,8 +35,9 @@ object CityMayor extends App {
   for (city <- canadaCities) {
     indexS += 1
     println(s" Canda City #$indexS.-> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
+    logger.info(s" Canda City #$indexS -> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
   }
 
-  println("============================================================")
+  println("==========================Completed Normally!==================================")
 
 }
