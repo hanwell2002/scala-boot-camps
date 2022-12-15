@@ -36,8 +36,14 @@ object CityMayor extends App {
     indexS += 1
     println(s" Canda City #$indexS.-> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
     logger.info(s" Canda City #$indexS -> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
+    Thread.sleep(100)
+    logger.debug("------------Beautiful Divide Line -------------")
+    Thread.sleep(200)
+
   }
 
-  println("==========================Completed Normally!==================================")
+  logger.info("==========================Completed Normally!==================================")
+  logger.warn("Nothing to warn :)")
+  logger.trace("Log Level is set to debug~, so this line won't appear in log.")
 
 }
