@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory
 //import ch.qos.logback.classic.LoggerContext
 
 /**
- * Generate Cityp model from table city
+ * Generate City model from table city
  * Command:
  *    sbt "scalikejdbcGen city"
  *
@@ -16,34 +16,41 @@ import org.slf4j.LoggerFactory
  *    sbt "scalikejdbcGen city City"
  *
  */
-
-// scala -classpath target/scala-2.12/orm-reverse-engine-lab_2.12-1.0.1.jar application.CityMayor
 object CityMayor extends App {
-  ConnectionPool.singleton("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "Admin$777")
+  ConnectionPool.singleton("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "MY_DB_PASSWD")
 
-  val logger = LoggerFactory.getLogger(this.getClass)
+  private val logger = LoggerFactory.getLogger(this.getClass)
   logger.info("@@@ ### >>> CityMayor started to work...")
 
   // find all cities Map to City
-  val cities = City.findAll()
+  private val cities = City.findAll()
   // cities.foreach(println)
 
-  val CITY_CODE = "CAN"
+  private val COUNTRY_CODE = "CAN"
   // filter out city of Canada which countrycode is CAN
-  val canadaCities = cities.filter(_.countrycode == CITY_CODE)
-  var indexS = 0
+  private val canadaCities = cities.filter(_.countrycode == COUNTRY_CODE)
+  private var indexS = 0
   for (city <- canadaCities) {
     indexS += 1
-    println(s" Canda City #$indexS.-> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
-    logger.info(s" Canda City #$indexS -> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
+    println(s" Canada City #$indexS.-> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
+    logger.info(s" Canada City #$indexS -> ${city.name}, ${city.countrycode}, ${city.district}, ${city.population}")
     Thread.sleep(100)
     logger.debug("------------Beautiful Divide Line -------------")
-    Thread.sleep(200)
+    Thread.sleep(100)
 
   }
 
-  logger.info("==========================Completed Normally!==================================")
   logger.warn("Nothing to warn :)")
   logger.trace("Log Level is set to debug~, so this line won't appear in log.")
+
+  import purecsv.safe._
+  logger.debug(canadaCities.toCSV())
+  canadaCities.writeCSVToFileName(
+    "Canada_Cities.csv"
+    , header = Some(Seq("ID", "City", "Code", "Province", "Population"))
+  )
+
+  logger.info("==========================Completed Normally!==================================")
+
 
 }
