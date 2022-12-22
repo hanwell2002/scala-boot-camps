@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %d{HH:mm:ss.SSS} TKD [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!--
+    Windows PS: mkdir -p C:/var/log/bigdata
+    Windows CMD: md -p c:\var\log\bigdata
+    Unix Like OS:
+        sudo mkdir /var/log/bigdata/
+        sudo chown myusername /var/log/bigdata
+        sudo chmod 755 /var/log/bigdata
+    -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>C:/var/log/bigdata/orm-reverse-engine-lab_%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%level] from %logger in %thread - %message%n%xException</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>C:/var/log/bigdata/orm-reverse-engine-lab_%d{yyyy-MM-dd}.log</file>
+         <append>true</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} TKD [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+     -->
+    <root level="debug">
+        <!--<appender-ref ref="STDOUT" />-->
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
