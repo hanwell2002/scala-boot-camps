@@ -28,8 +28,6 @@ object CurryingFunctionDemo {
 
     val sum2 = add2(78);
     println(sum2(56))
-
-
   }
 
   def strcat(s1: String)(s2: String) = {
