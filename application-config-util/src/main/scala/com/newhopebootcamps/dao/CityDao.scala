@@ -1,8 +1,9 @@
 package com.newhopebootcamps.dao
 
-import java.sql.{ResultSet, SQLException}
+import java.sql.{Connection, ResultSet, SQLException}
 
 class CityDao extends Dao {
+
 
   def read(query: String) {
     // demo("Howdy! Check out the Logs to see the output...")

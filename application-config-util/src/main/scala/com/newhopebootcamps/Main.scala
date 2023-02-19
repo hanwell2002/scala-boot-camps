@@ -12,9 +12,10 @@ object Main {
   def main(args: Array[String]): Unit = {
     logger.info("Application Started................")
 
-    generateReport
+   // generateReport
+    findByContinent
 
-    CsvDemoHelper.write("/opt/bootcamps/reports/demo.csv")
+   // CsvDemoHelper.write("/opt/bootcamps/reports/demo.csv")
 
 //    register("hanwell@newhopebootcamps.com")
 
@@ -37,6 +38,14 @@ object Main {
     val query = s"SELECT * from city where countrycode='${countrycode}'"
     val cityDao = new CityDao
     cityDao.read(query)
+
+  }
+
+  def findByContinent =  {
+    // Find COUNTRY by Continent
+    val continentName="North America"
+    val dao = new CountryDao
+    dao.quickFind(continentName)
 
   }
 
