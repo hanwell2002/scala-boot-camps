@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/bash
 
 ########################################
 ## Define base directory for the application
