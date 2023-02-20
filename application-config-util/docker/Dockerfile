@@ -5,8 +5,8 @@ WORKDIR /opt/docker
 COPY 2/opt /opt
 COPY 4/opt /opt
 COPY opt /opt
-ENV COCKROACH_HOST="dev.localhost"
-ENV COCKROACH_PORT="26257"
+ENV JAVA_HOME="/opt/bootcamps/apps/OPENJDK8"
+ENV KAFKA_PORT="9092"
 RUN ["mkdir", "-p", "/opt/docker/.logs", "/opt/docker/.keys"]
 RUN ["chown", "-R", "demiourgos728:root", "/opt/docker/.logs", "/opt/docker/.keys"]
 RUN ["mkdir", "-p", "/opt/bootcamps"]

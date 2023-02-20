@@ -24,9 +24,10 @@ object Main {
     logger.info("Application Completed.................")
     println("Report generated!")
 
-   /* for( a <- 1 to 20000){
+   for( a <- 1 to 2){
       log
-    }*/
+      Thread.sleep(3000) // wait for 1000 millisecond
+    }
   }
 
   def log = {

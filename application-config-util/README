@@ -1,1 +1,9 @@
 application-config-util is a demo app.
+
+sbt docker:stage
+docker build -t application-config-util .
+docker run -it  application-config-util /bin/bash
+
+docker ps -a
+#find CONTAINER ID by above command
+docker exec -it ${CONTAINER ID} /bin/bash

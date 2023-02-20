@@ -13,8 +13,8 @@ lazy val root = (project in file("."))
   )
 
 // enablePlugins(AssemblyPlugin)
-//enablePlugins(JavaAppPackaging, UniversalPlugin)
-//enablePlugins(JavaAppPackaging,DockerPlugin,  WindowsPlugin)  //DockerSpotifyClientPlugin
+// enablePlugins(JavaAppPackaging, UniversalPlugin)
+// enablePlugins(JavaAppPackaging, UniversalPlugin, DockerPlugin, WindowsPlugin)  //DockerSpotifyClientPlugin
 enablePlugins(JavaAppPackaging, DockerPlugin)
 
 //--------------for Windows plugins ------------------------
@@ -30,7 +30,6 @@ wixProductId := "ce07be71-510d-414a-92d4-dff47631848a"
 wixProductUpgradeId := "4552fb0e-e257-4dbd-9ecb-dba9dbacf424"
 //--------------end of windows plugins----------------
 */
-
 Universal / mappings ++= directory("deployUtil")
 Universal / mappings ++= directory("log")
 Universal / mappings ++= directory("reports")
@@ -46,26 +45,31 @@ Windows / mappings ++= directory("reports")
 Windows / mappings ++= directory(sourceDirectory.value / "main" / "resources" / "config")
 */
 
-lazy val _postgresJDBCVersion = "42.5.1"
-
 Compile / mainClass := Some("com.newhopebootcamps.Main")
-Docker / packageName := "arceed/application-config-util"
-dockerExposedPorts ++= Seq(5432, 8080, 9000)
-dockerEnvVars ++= Map(("COCKROACH_HOST", "dev.localhost"), ("COCKROACH_PORT", "26257"))
-dockerExposedVolumes := Seq("/opt/docker/.logs", "/opt/docker/.keys")
+Docker / packageName := "hanwell/application-config-util"
+dockerExposedPorts ++= Seq(5432, 8080, 9092)
+dockerEnvVars ++= Map(("JAVA_HOME", "/opt/bootcamps/apps/CURR_JDK"), ("KAFKA_PORT", "9092"))
+dockerExposedVolumes := Seq("/opt/docker/.logs", "/opt/docker/.keys", "/opt/bootcamps/reports", "/opt/bootcamps/logs")
 
 defaultLinuxInstallLocation in Docker := "/opt/bootcamps"
 dockerChmodType := DockerChmodType.UserGroupWriteExecute
-dockerAdditionalPermissions += (DockerChmodType.UserGroupPlusExecute, "/opt/docker/bin/hello")
-dockerPermissionStrategy := DockerPermissionStrategy.None
+dockerAdditionalPermissions += (DockerChmodType.UserGroupWriteExecute, "/opt/bootcamps/log")
+dockerAdditionalPermissions += (DockerChmodType.UserGroupWriteExecute, "/opt/bootcamps/reports")
+dockerPermissionStrategy := DockerPermissionStrategy.MultiStage
+
+lazy val _postgresJDBCVersion = "42.5.1"
+lazy val _logbackVersion="1.2.3"
+lazy val _commons_codecVersion= "1.15"
+lazy val _scala_csvVersion="1.3.10"
+lazy val _typesafeConfigVersion="1.4.2"
 
 libraryDependencies ++= Seq(
   "org.postgresql"                % "postgresql"                      % _postgresJDBCVersion,
-  "com.github.tototoshi"          %% "scala-csv"                      % "1.3.10",
-  "com.typesafe"                  % "config"                          % "1.4.2",
-  "ch.qos.logback"                % "logback-classic"                 % "1.2.3",
-  "commons-codec"                 % "commons-codec"                   % "20041127.091804",
-  //"com.spotify"                   % "docker-client"                   % "8.9.0", //no good slow build, conflict with assembly
+  "com.github.tototoshi"          %% "scala-csv"                      % _scala_csvVersion,
+  "com.typesafe"                  % "config"                          % _typesafeConfigVersion,
+  "ch.qos.logback"                % "logback-classic"                 % _logbackVersion,
+  "commons-codec"                 % "commons-codec"                   % _commons_codecVersion,
+  //"com.spotify"                 % "docker-client"                   % "8.9.0", //slow build, conflict with assembly
   "org.web3j"                     % "crypto"                          % "5.0.0",
   "com.typesafe.slick"            %% "slick"                          % "3.4.1",
   "org.scalatest"                 % "scalatest_2.11"                  % "3.2.15"
