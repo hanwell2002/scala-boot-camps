@@ -42,9 +42,10 @@ object Main {
 
     try {
       // dao.createTable() //only run once, other wise will throw out exception.
+      // dao.insertRecord()
       // dao.insertTraders(List(new Trader(2, "Joe", "Joe.Biden@gmail.com", "USA", "password123"), new Trader(3, "Bush", "Bush@gmail.com", "US", "password123")))
       dao.updateRecord
-      //dao.insertRecord
+      // dao.insertRecord
 
       dao.getAll()
 

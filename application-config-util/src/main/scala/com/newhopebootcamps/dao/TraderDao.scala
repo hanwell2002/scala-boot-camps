@@ -10,10 +10,6 @@ import java.sql.{DriverManager, SQLException}
  */
 class TraderDao extends Dao {
 
-  private val url = "jdbc:postgresql://192.168.1.18:5432/postgres"
-  private val user = "postgres"
-  private val password = "Admin@777"
-
   val createTableSQL =
     """
       |CREATE TABLE traders (
@@ -35,7 +31,7 @@ class TraderDao extends Dao {
   def createTable(): Unit = {
     logger.info(createTableSQL)
     // Step 1: Establishing a Connection
-    val connection = DriverManager.getConnection(url, user, password)
+    val connection = getConnection
     // Step 2:Create a statement using connection object
     val statement = connection.createStatement
     try
@@ -54,15 +50,15 @@ class TraderDao extends Dao {
   def insertRecord(): Unit = {
     logger.info(INSERT_USERS_SQL)
     // Step 1: Establishing a Connection
-    val connection = DriverManager.getConnection(url, user, password)
+    val connection = getConnection
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)
     try {
       preparedStatement.setInt(1, 1)
-      preparedStatement.setString(2, "Tony")
-      preparedStatement.setString(3, "tony@gmail.com")
-      preparedStatement.setString(4, "US")
-      preparedStatement.setString(5, "secret")
+      preparedStatement.setString(2, "ChatGPTony")
+      preparedStatement.setString(3, "OpenAI@gmail.com")
+      preparedStatement.setString(4, "USA")
+      preparedStatement.setString(5, "USDD")
       println(preparedStatement)
       // Step 3: Execute the query or update query
       preparedStatement.executeUpdate
@@ -80,7 +76,7 @@ class TraderDao extends Dao {
    */
   @throws[SQLException]
   def insertTraders(list: List[Trader]): Unit = {
-    val conn = DriverManager.getConnection(url, user, password)
+    val conn = getConnection
     val statement = conn.prepareStatement(INSERT_USERS_SQL)
     try {
       var count = 0
@@ -112,7 +108,7 @@ class TraderDao extends Dao {
     // using try-with-resources to avoid closing resources (boiler plate
     // code)
     // Step 1: Establishing a Connection
-    val connection = DriverManager.getConnection(url, user, password)
+    val connection = getConnection
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(QUERY)
     try {
@@ -142,7 +138,7 @@ class TraderDao extends Dao {
     // using try-with-resources to avoid closing resources (boiler plate
     // code)
     // Step 1: Establishing a Connection
-    val connection = DriverManager.getConnection(url, user, password)
+    val connection = getConnection
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(SELECT_ALL_QUERY)
     try {
@@ -196,19 +192,16 @@ class TraderDao extends Dao {
 
   }
 
-
   private val UPDATE_USERS_SQL = "update traders set name = ? where id = ?;"
-
-
   @throws[SQLException]
   def updateRecord(): Unit = {
     logger.info(UPDATE_USERS_SQL)
     // Step 1: Establishing a Connection
-    val connection = DriverManager.getConnection(url, user, password)
+    val connection = getConnection
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(UPDATE_USERS_SQL)
     try {
-      preparedStatement.setString(1, "Jeo")
+      preparedStatement.setString(1, "Joe")
       preparedStatement.setInt(2, 2)
       // Step 3: Execute the query or update query
       preparedStatement.executeUpdate
@@ -225,7 +218,7 @@ class TraderDao extends Dao {
   def deleteRecord(): Unit = {
     logger.info(DELETE_USERS_SQL)
     // Step 1: Establishing a Connection
-    val connection = DriverManager.getConnection(url, user, password)
+    val connection = getConnection
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(DELETE_USERS_SQL)
     try {
@@ -246,21 +239,6 @@ class TraderDao extends Dao {
 
     logger.error(ex.getMessage)
 
-    /*  import scala.collection.JavaConversions._
-      for (e <- ex) {
-        if (e.isInstanceOf[Nothing]) {
-          e.printStackTrace(System.err)
-          System.err.println("SQLState: " + e.asInstanceOf[Nothing].getSQLState)
-          System.err.println("Error Code: " + e.asInstanceOf[Nothing].getErrorCode)
-          System.err.println("Message: " + e.getMessage)
-          var t = ex.getCause
-          while (t != null) {
-            logger.info("Cause: " + t)
-            t = t.getCause
-          }
-        }
-      }
-    */
   }
 
 }
