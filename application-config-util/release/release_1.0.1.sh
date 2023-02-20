@@ -16,8 +16,8 @@ APP_BASE=/opt/bootcamps
 ########################################################################
 ### Specify directories to be created
 ########################################################################
-# new_dir[1]=${APP_BASE}/ftp-in
 
+# new_dir[1]=${APP_BASE}/ftp-in
 ########################################################################
 ### Specify files need to be deployed
 ########################################################################
@@ -47,4 +47,4 @@ echo "`date`: Deploy starts"
 
 deploy
 
-echo "Deployme is completed, please verify."
+echo "Deployment is done. Please verify."

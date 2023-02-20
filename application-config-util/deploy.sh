@@ -25,7 +25,6 @@ do
     esac
 done
 
-## Default deployment directory, it should be the same as defined in deploy.yml
 # DEPLOY_BASE_DIR=`pwd`
 DEPLOY_BASE_DIR=/opt/bootcamps/release/deployments
 # APP_NAME=`echo ${PKG_NAME}|cut -f1 -d'-'`
