@@ -20,7 +20,7 @@ class CountryDao extends Dao {
       case e: SQLException => logger.error("SQLException: %s", e.getMessage)
       case _: Throwable => logger.error("Exception: Unknown exception.")
 
-        return null
+      return null
     }
 
     resultSet
@@ -28,7 +28,6 @@ class CountryDao extends Dao {
 
   def quickFind(parameter: String) = {
     log.info("Info: {} use thread {} to dispatch", "Calling read()", Thread.currentThread.getName)
-    // val query = "SELECT * from country WHERE continent = ?"
     val query = "SELECT * from country WHERE continent = ? AND population < ?  ORDER BY ? DESC"
     /*  sqlinjection
         abc' or '1' = '1
@@ -46,12 +45,11 @@ class CountryDao extends Dao {
     // '1' or true,  abc' or '1' = '1
     //    val query3= String.format("city name = %20s, country code = %s", "abc", "bush")
     //
-    //execution plan
-
     try {
       // create the statement, and run the query
       val connection = getConnection;
 
+      //execution plan
       val statement = connection.prepareStatement(query)
       statement.setString(1, parameter)
       statement.setInt(2, 18000)
@@ -73,7 +71,6 @@ class CountryDao extends Dao {
   }
 
   class Country(var name: String)
-
   //write a country class
   def add(obj: Country) = {
     // todo add a new country to Table
@@ -97,9 +94,6 @@ class CountryDao extends Dao {
         statement.setInt(1, obj.population)
         statement.setString(2, "real country name")
     */
-
-
   }
-
 
 }

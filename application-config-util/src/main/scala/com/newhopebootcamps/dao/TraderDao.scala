@@ -47,7 +47,7 @@ class TraderDao extends Dao {
   }
 
   @throws[SQLException]
-  def insertRecord(): Unit = {
+  def addOne: Unit = {
     logger.info(INSERT_USERS_SQL)
     // Step 1: Establishing a Connection
     val connection = getConnection
@@ -75,7 +75,7 @@ class TraderDao extends Dao {
    * insert multiple traders  List < User > list
    */
   @throws[SQLException]
-  def insertTraders(list: List[Trader]): Unit = {
+  def batchAdd(list: List[Trader]): Unit = {
     val conn = getConnection
     val statement = conn.prepareStatement(INSERT_USERS_SQL)
     try {
@@ -104,7 +104,7 @@ class TraderDao extends Dao {
   }
 
   @throws[SQLException]
-  def getUserById(): Unit = {
+  def findById(id: Int): Unit = {
     // using try-with-resources to avoid closing resources (boiler plate
     // code)
     // Step 1: Establishing a Connection
@@ -112,7 +112,7 @@ class TraderDao extends Dao {
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(QUERY)
     try {
-      preparedStatement.setInt(1, 1)
+      preparedStatement.setInt(1, id)
       println(preparedStatement)
       // Step 3: Execute the query or update query
       val rs = preparedStatement.executeQuery
@@ -133,37 +133,8 @@ class TraderDao extends Dao {
     }
   }
 
-  @throws[SQLException]
-  def getAllTraders(): Unit = {
-    // using try-with-resources to avoid closing resources (boiler plate
-    // code)
-    // Step 1: Establishing a Connection
-    val connection = getConnection
-    // Step 2:Create a statement using connection object
-    val preparedStatement = connection.prepareStatement(SELECT_ALL_QUERY)
-    try {
-      // Step 3: Execute the query or update query
-      val rs = preparedStatement.executeQuery
-      // Step 4: Process the ResultSet object.
-      while (rs.next) {
-        val id = rs.getInt("id")
-        val name = rs.getString("name")
-        val email = rs.getString("email")
-        val country = rs.getString("country")
-        val password = rs.getString("password")
-        logger.info(id + "," + name + "," + email + "," + country + "," + password)
-      }
-    } catch {
-      case e: SQLException => writeSqlExceptionToLog(e)
-    } finally {
-      if (connection != null) connection.close()
-      if (preparedStatement != null) preparedStatement.close()
-    }
-
-  }
-
-  @throws[SQLException]
-  def getAll(): Unit = {
+    @throws[SQLException]
+  def findAll(): Unit = {
     // using try-with-resources to avoid closing resources (boiler plate
     // code)
     // Step 1: Establishing a Connection
@@ -194,7 +165,7 @@ class TraderDao extends Dao {
 
   private val UPDATE_USERS_SQL = "update traders set name = ? where id = ?;"
   @throws[SQLException]
-  def updateRecord(): Unit = {
+  def update(): Unit = {
     logger.info(UPDATE_USERS_SQL)
     // Step 1: Establishing a Connection
     val connection = getConnection
@@ -215,7 +186,7 @@ class TraderDao extends Dao {
   }
 
   @throws[SQLException]
-  def deleteRecord(): Unit = {
+  def delete(): Unit = {
     logger.info(DELETE_USERS_SQL)
     // Step 1: Establishing a Connection
     val connection = getConnection

@@ -11,43 +11,49 @@ import java.sql.SQLException
 import java.util
 
 object Main {
-  val logger = LoggerFactory.getLogger(this.getClass)
+  private val logger = LoggerFactory.getLogger(this.getClass)
 
   def main(args: Array[String]): Unit = {
     logger.info("Application Started................")
+
     generateReport
+    println(">> Report generated!")
+
     // findByContinent
     demoUserCrud
+
     // CsvDemoHelper.write("/opt/bootcamps/reports/demo.csv")
     // register("hanwell@newhopebootcamps.com")
 
-    logger.info("Application Completed.................")
-    println("Report generated!")
-
-   for( a <- 1 to 2){
+    // keep app up to check report inside docker container., set
+    val period = 5; //200000
+    for (t <- 1 to period) {
       log
-      Thread.sleep(3000) // wait for 1000 millisecond
+      Thread.sleep(2000) // wait for 2000 millisecond
     }
+
+    logger.info("#..........................................................#")
+    logger.info("|................... Application Completed.................|")
+    logger.info("#..........................................................#")
   }
 
   def log = {
-    logger.trace("A TRACE Message")
-    logger.debug("A DEBUG Message")
-    logger.info("An INFO Message")
-    logger.warn("A WARN Message")
-    logger.error("An ERROR Message")
+    logger.error("Error message")
+    logger.warn("Warn message")
+    logger.trace("Trace message")
+    logger.debug("Debug message")
+    logger.info("Info message example.")
   }
+
   def demoUserCrud(): Unit = {
     val dao = new TraderDao
 
     try {
-      // dao.createTable() //only run once, other wise will throw out exception.
-      // dao.insertRecord()
-      // dao.insertTraders(List(new Trader(2, "Joe", "Joe.Biden@gmail.com", "USA", "password123"), new Trader(3, "Bush", "Bush@gmail.com", "US", "password123")))
-      dao.updateRecord
-      // dao.insertRecord
-
-      dao.getAll()
+      dao.createTable() //only run once, other wise will throw out exception.
+      dao.addOne
+      dao.batchAdd(List(new Trader(2, "Joe", "Joe.Biden@gmail.com", "USA", "password123"), new Trader(3, "Bush", "Bush@gmail.com", "US", "password123")))
+      dao.update
+      dao.findAll()
 
     } catch {
       case e: SQLException => logger.error(e.getMessage)
