@@ -1,7 +1,8 @@
 #!/bin/bash
 
-export APP_BASE=/opt/bootcamps
 
+export APP_BASE=/opt/bootcamps
+mkdir -p /opt/bootcamps
 mkdir -p ${APP_BASE}/bin
 mkdir -p ${APP_BASE}/script
 mkdir -p ${APP_BASE}/lib

@@ -1,36 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration>
 <configuration>
-    <variable name="LOG_FULL_PATH" value="/opt/bootcamps/log/application-config-example.log"/>
-    <variable name="msg_pattern" value="%d{HH:mm:ss.SSS} App [%thread] %-5level %logger{36} - %msg%n"/>
-    <variable name="message_pattern"
-              value="%green(%d{ISO8601}) [%thread] %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable"/>
+    <variable name="LOG_BASE_PATH" value="/opt/bootcamps/log"/>
+    <variable name="LOG_FILE_NAME" value="application-config-example"/>
 
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_FULL_PATH}</file>
+    <variable name="msg_pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+    <variable name="display_pattern" value="%green(%d{ISO8601}) %highlight(%-5level) [%blue(%t)]: %msg%n%throwable"/>
+    <variable name="message_pattern" value="%green(%d{ISO8601}) [%blue(%thread)] %highlight(%-5level): %msg%n%throwable"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${msg_pattern}</pattern>
+            <pattern>${message_pattern}</pattern>
+        </encoder>
+    </appender>
+    <!--   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+           <file>${LOG_BASE_PATH}/${LOG_FILE_NAME}.log</file>
+           <encoder>
+               <pattern>${msg_pattern}</pattern>
+           </encoder>
+       </appender>-->
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_BASE_PATH}/${LOG_FILE_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_BASE_PATH}/%d{yyyy-MM}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <!-- each archived file's size will be max 10MB -->
+            <maxFileSize>2MB</maxFileSize>
+            <!-- 7 Years to keep -->
+            <maxHistory>2556</maxHistory>
+            <!-- total size of all archive files, if total size > 200GB, it will delete old archived file -->
+            <totalSizeCap>200GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder>
-                <pattern>${message_pattern}</pattern>
-            </encoder>
-        </appender>
-    <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
+    <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">
         <appender-ref ref="FILE"/>
     </appender>
 
-    <appender name="ASYNCSTDOUT" class="ch.qos.logback.classic.AsyncAppender">
+    <appender name="ASYNC-STDOUT" class="ch.qos.logback.classic.AsyncAppender">
         <appender-ref ref="STDOUT"/>
     </appender>
 
     <logger name="application" level="INFO"/>
 
-    <root level="INFO">
-        <appender-ref ref="ASYNCFILE"/>
-        <appender-ref ref="ASYNCSTDOUT"/>
+    <root>
+        <appender-ref ref="ASYNC-FILE"/>
+        <appender-ref ref="ASYNC-STDOUT"/>
     </root>
 
 </configuration>
