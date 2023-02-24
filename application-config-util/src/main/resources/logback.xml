@@ -46,7 +46,7 @@
 
     <logger name="application" level="INFO"/>
 
-    <root>
+    <root level="INFO">
         <appender-ref ref="ASYNC-FILE"/>
         <appender-ref ref="ASYNC-STDOUT"/>
     </root>
