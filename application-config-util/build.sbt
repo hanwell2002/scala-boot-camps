@@ -35,6 +35,7 @@ Universal / mappings ++= directory("log")
 Universal / mappings ++= directory("reports")
 Universal / mappings ++= directory(sourceDirectory.value / "main" / "resources" / "config")
 Universal / mappings += (sourceDirectory.value / "main" / "resources"/ "logback.xml") -> "config/logback.xml"
+Universal / mappings += (sourceDirectory.value / "main" / "resources"/ "application.conf") -> "config/application.conf"
 // Universal / mappings += (sourceDirectory.value / "main" / "resources"/ "config/database.cfg") -> "config/database.cfg"
 Universal / packageZipTarball / mappings += file("README") -> "README"
 Universal / packageZipTarball / mappings += (baseDirectory.value / "release" / "release_1.0.1.sh") -> "release_1.0.1.sh"
