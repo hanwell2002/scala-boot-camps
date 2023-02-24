@@ -25,7 +25,7 @@ object Main {
     // CsvDemoHelper.write("/opt/bootcamps/reports/demo.csv")
     // register("hanwell@newhopebootcamps.com")
 
-    // keep app up to check report inside docker container., set
+    // keep app up to check report inside docker container
     val period = 5; //200000
     for (t <- 1 to period) {
       log
@@ -38,11 +38,13 @@ object Main {
   }
 
   def log = {
+/*
     logger.error("Error message")
     logger.warn("Warn message")
     logger.trace("Trace message")
     logger.debug("Debug message")
-    logger.info("Info message example.")
+*/
+    logger.info("Application is running ...")
   }
 
   def demoUserCrud(): Unit = {
