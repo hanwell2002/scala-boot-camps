@@ -20,10 +20,10 @@ object PostgresDataFrameDemo extends App {
 
   val format = new SimpleDateFormat("yyyyMMddhhmmss")
   val time_stampe_for_file = format.format(Calendar.getInstance().getTime())
-  val csvFileTo = "/opt/bootcamps/report/output/" // Should be some file on your system
+  val csvFileTo = "/opt/bootcamps/reports/output/" // Should be some file on your system
   // val csvcity = csvFileTo + "city_" + time_stampe_for_file + ".csv"
   // val csvcountry   = csvFileTo + "country_"   + time_stampe_for_file + ".csv"
-  val jsonFile = "/opt/bootcamps/report/outputjson/tb_json.json" // Should be some file on your system
+  val jsonFile = "/opt/bootcamps/reports/outputjson/tb_json.json" // Should be some file on your system
   val conf_loc = "/opt/data/config/spark/fortune100.cfg"
 
   val spark = SparkSession.builder()
