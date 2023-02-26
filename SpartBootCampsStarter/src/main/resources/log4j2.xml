@@ -1,0 +1,45 @@
+<Configuration status="DEBUG">
+    <properties>
+        <property name="LOG_BASE_PATH">/opt/bootcamps/log</property>
+        <property name="LOG_FILE_NAME">spark-starter-project</property>
+        <property name="file_pattern">%d %p %c{1.} [%t] %m%n</property>
+        <property name="msg_pattern">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</property>
+        <property name="display_pattern">%green(%d{ISO8601}) %highlight(%-5level) [%blue(%t)]: %msg%n%throwable</property>
+        <property name="message_pattern">%green(%d{ISO8601}) [%blue(%thread)] %highlight(%-5level): %msg%n%throwable</property>
+    </properties>
+    <Appenders>
+        <Console name="CONSOLE_LOG" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <RollingFile name="LOG_TO_ROLLING_FILE" fileName="${LOG_BASE_PATH}/${LOG_FILE_NAME}.log"
+                     filePattern="/opt/bootcamps/log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>${file_pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- avoid duplicated logs with additivity=false -->
+        <Logger name="com.arceed.spark.LogTester" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE_LOG"/>
+            <AppenderRef ref="LOG_TO_ROLLING_FILE"/>
+        </Logger>
+        <Logger name="com.newhopebootcamps.spark.HelloLogback" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE_LOG"/>
+            <AppenderRef ref="LOG_TO_ROLLING_FILE"/>
+        </Logger>
+        <Logger name="com.newhopebootcamps.spark.SparkSessionStarter" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE_LOG"/>
+            <AppenderRef ref="LOG_TO_ROLLING_FILE"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="LOG_TO_ROLLING_FILE"/>
+            <AppenderRef ref="CONSOLE_LOG"/>
+        </Root>
+    </Loggers>
+</Configuration>

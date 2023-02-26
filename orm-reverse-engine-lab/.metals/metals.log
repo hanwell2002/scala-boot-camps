@@ -1,0 +1,75 @@
+2022.12.14 13:46:48 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/.metals/lsp.trace.json or /home/hanwell/.cache/metals/lsp.trace.json[0m
+2022.12.14 13:46:49 INFO  logging to file /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/.metals/metals.log[0m
+2022.12.14 13:46:49 INFO  Started: Metals version 0.11.9 in workspace '/home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab' for client Visual Studio Code 1.74.0.[0m
+2022.12.14 13:46:51 INFO  time: initialize in 2.49s[0m
+2022.12.14 13:46:54 WARN  Build server is not auto-connectable.[0m
+2022.12.14 13:46:54 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/src/main/scala/Main.scala[0m
+2022.12.14 13:46:54 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 13:47:01 INFO  no build target found for /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt. Using presentation compiler with project's scala-library version: 3.2.0[0m
+2022.12.14 13:47:03 INFO  time: code lens generation in 8.62s[0m
+2022.12.14 13:47:10 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/src/main/scala/Main.scala[0m
+Dec. 14, 2022 1:47:10 P.M. org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: scala.meta.internal.metals.debug.BuildTargetNotFoundForPathException: No build target could be found for the path: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/src/main/scala/Main.scala
+java.util.concurrent.CompletionException: scala.meta.internal.metals.debug.BuildTargetNotFoundForPathException: No build target could be found for the path: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/src/main/scala/Main.scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.uniAcceptNow(CompletableFuture.java:743)
+	at java.base/java.util.concurrent.CompletableFuture.uniAcceptStage(CompletableFuture.java:731)
+	at java.base/java.util.concurrent.CompletableFuture.thenAcceptAsync(CompletableFuture.java:2112)
+	at scala.concurrent.java8.FuturesConvertersImpl$CF.thenAccept(FutureConvertersImpl.scala:37)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:279)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: scala.meta.internal.metals.debug.BuildTargetNotFoundForPathException: No build target could be found for the path: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/src/main/scala/Main.scala
+	at scala.meta.internal.metals.debug.DebugProvider.debugDiscovery(DebugProvider.scala:412)
+	at scala.meta.internal.metals.MetalsLanguageServer.executeCommand(MetalsLanguageServer.scala:1963)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	... 9 more
+
+2022.12.14 13:50:25 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 13:50:25 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 13:50:48 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 13:50:54 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 14:14:33 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 14:24:31 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 14:31:07 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 14:31:17 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 14:31:34 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 14:32:21 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/project/plugins.sbt[0m
+2022.12.14 14:32:35 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/project/plugins.sbt[0m
+2022.12.14 14:32:49 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/project/plugins.sbt[0m
+2022.12.14 14:33:03 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:13:04 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:13:19 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:20:35 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:20:42 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:27:35 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:27:42 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:27:49 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:33:59 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:34:09 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:39:37 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:46:04 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:46:22 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 15:48:14 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:00:12 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:00:20 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:09:31 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:09:38 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:25:22 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:29:43 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:31:38 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 16:43:54 WARN  no build target for: /home/hanwell/Desktop/project/scala-boot-camps/orm-reverse-engine-lab/build.sbt[0m
+2022.12.14 17:11:49 INFO  shutting down Metals[0m
