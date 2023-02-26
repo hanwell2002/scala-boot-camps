@@ -9,7 +9,6 @@ import com.newhopebootcamps.util.{CommonUtils, CsvFileUtil}
 import org.slf4j.LoggerFactory
 
 import java.sql.SQLException
-import java.util
 
 object Main {
   private val logger = LoggerFactory.getLogger(this.getClass)
@@ -49,18 +48,12 @@ object Main {
       Thread.sleep(2000) // wait for 2000 millisecond
     }
 
-    logger.info("#..........................................................#")
-    logger.info("|................... Application Completed.................|")
-    logger.info("#..........................................................#")
+    logger.info("#----------------------------------------------------------#")
+    logger.info("|                    Application Completed                 |")
+    logger.info("#----------------------------------------------------------#")
   }
 
   def log = {
-/*
-    logger.error("Error message")
-    logger.warn("Warn message")
-    logger.trace("Trace message")
-    logger.debug("Debug message")
-*/
     logger.info("Application is running ...")
   }
 
@@ -100,7 +93,7 @@ object Main {
 
   @throws[SQLException]
   def findByContinent = {
-    // Find COUNTRY by Continent
+    // Find countries by Continent Name
     val continentName = "North America"
     val dao = new CountryDao
     dao.quickFind(continentName)
