@@ -1,0 +1,114 @@
+2023-02-12 02:08:43,425 [INFO] from Main$ in main - Application started...
+2023-02-12 02:08:44,220 [DEBUG] from Main$ in main - country-name = ANT, location = Caribbean
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = AIA, location = Caribbean
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = ATG, location = Caribbean
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = ABW, location = Caribbean
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = BHS, location = Caribbean
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = BRB, location = Caribbean
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = BLZ, location = Central America
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = BMU, location = North America
+2023-02-12 02:08:44,221 [DEBUG] from Main$ in main - country-name = VGB, location = Caribbean
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = CYM, location = Caribbean
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = DMA, location = Caribbean
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = DOM, location = Caribbean
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = SLV, location = Central America
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = GRD, location = Caribbean
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = GRL, location = North America
+2023-02-12 02:08:44,222 [DEBUG] from Main$ in main - country-name = GLP, location = Caribbean
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = GTM, location = Central America
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = HTI, location = Caribbean
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = HND, location = Central America
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = JAM, location = Caribbean
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = CAN, location = North America
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = CUB, location = Caribbean
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = MTQ, location = Caribbean
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = MEX, location = Central America
+2023-02-12 02:08:44,223 [DEBUG] from Main$ in main - country-name = MSR, location = Caribbean
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = NIC, location = Central America
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = PAN, location = Central America
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = PRI, location = Caribbean
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = KNA, location = Caribbean
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = LCA, location = Caribbean
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = VCT, location = Caribbean
+2023-02-12 02:08:44,224 [DEBUG] from Main$ in main - country-name = SPM, location = North America
+2023-02-12 02:08:44,225 [DEBUG] from Main$ in main - country-name = TTO, location = Caribbean
+2023-02-12 02:08:44,225 [DEBUG] from Main$ in main - country-name = TCA, location = Caribbean
+2023-02-12 02:08:44,225 [DEBUG] from Main$ in main - country-name = USA, location = North America
+2023-02-12 02:08:44,225 [DEBUG] from Main$ in main - country-name = VIR, location = Caribbean
+2023-02-12 02:08:44,247 [INFO] from Main$ in main - -----------------------completed  ------------------------
+2023-02-12 02:10:03,054 [INFO] from Main$ in main - Application started...
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = ANT, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = AIA, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = ATG, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = ABW, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = BHS, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = BRB, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = BLZ, location = Central America
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = BMU, location = North America
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = VGB, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = CYM, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = DMA, location = Caribbean
+2023-02-12 02:10:03,858 [DEBUG] from Main$ in main - country-name = DOM, location = Caribbean
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = SLV, location = Central America
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = GRD, location = Caribbean
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = GRL, location = North America
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = GLP, location = Caribbean
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = GTM, location = Central America
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = HTI, location = Caribbean
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = HND, location = Central America
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = JAM, location = Caribbean
+2023-02-12 02:10:03,859 [DEBUG] from Main$ in main - country-name = CAN, location = North America
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = CUB, location = Caribbean
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = MTQ, location = Caribbean
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = MEX, location = Central America
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = MSR, location = Caribbean
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = NIC, location = Central America
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = PAN, location = Central America
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = PRI, location = Caribbean
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = KNA, location = Caribbean
+2023-02-12 02:10:03,860 [DEBUG] from Main$ in main - country-name = LCA, location = Caribbean
+2023-02-12 02:10:03,861 [DEBUG] from Main$ in main - country-name = VCT, location = Caribbean
+2023-02-12 02:10:03,861 [DEBUG] from Main$ in main - country-name = SPM, location = North America
+2023-02-12 02:10:03,861 [DEBUG] from Main$ in main - country-name = TTO, location = Caribbean
+2023-02-12 02:10:03,861 [DEBUG] from Main$ in main - country-name = TCA, location = Caribbean
+2023-02-12 02:10:03,862 [DEBUG] from Main$ in main - country-name = USA, location = North America
+2023-02-12 02:10:03,862 [DEBUG] from Main$ in main - country-name = VIR, location = Caribbean
+2023-02-12 02:10:03,887 [INFO] from Main$ in main - -----------------------completed  ------------------------
+2023-02-12 02:13:00,676 [INFO] from Main$ in main - Application started...
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = ANT, location = Caribbean
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = AIA, location = Caribbean
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = ATG, location = Caribbean
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = ABW, location = Caribbean
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = BHS, location = Caribbean
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = BRB, location = Caribbean
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = BLZ, location = Central America
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = BMU, location = North America
+2023-02-12 02:13:01,479 [DEBUG] from Main$ in main - country-name = VGB, location = Caribbean
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = CYM, location = Caribbean
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = DMA, location = Caribbean
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = DOM, location = Caribbean
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = SLV, location = Central America
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = GRD, location = Caribbean
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = GRL, location = North America
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = GLP, location = Caribbean
+2023-02-12 02:13:01,480 [DEBUG] from Main$ in main - country-name = GTM, location = Central America
+2023-02-12 02:13:01,481 [DEBUG] from Main$ in main - country-name = HTI, location = Caribbean
+2023-02-12 02:13:01,481 [DEBUG] from Main$ in main - country-name = HND, location = Central America
+2023-02-12 02:13:01,481 [DEBUG] from Main$ in main - country-name = JAM, location = Caribbean
+2023-02-12 02:13:01,481 [DEBUG] from Main$ in main - country-name = CAN, location = North America
+2023-02-12 02:13:01,481 [DEBUG] from Main$ in main - country-name = CUB, location = Caribbean
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = MTQ, location = Caribbean
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = MEX, location = Central America
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = MSR, location = Caribbean
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = NIC, location = Central America
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = PAN, location = Central America
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = PRI, location = Caribbean
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = KNA, location = Caribbean
+2023-02-12 02:13:01,482 [DEBUG] from Main$ in main - country-name = LCA, location = Caribbean
+2023-02-12 02:13:01,483 [DEBUG] from Main$ in main - country-name = VCT, location = Caribbean
+2023-02-12 02:13:01,483 [DEBUG] from Main$ in main - country-name = SPM, location = North America
+2023-02-12 02:13:01,483 [DEBUG] from Main$ in main - country-name = TTO, location = Caribbean
+2023-02-12 02:13:01,483 [DEBUG] from Main$ in main - country-name = TCA, location = Caribbean
+2023-02-12 02:13:01,483 [DEBUG] from Main$ in main - country-name = USA, location = North America
+2023-02-12 02:13:01,483 [DEBUG] from Main$ in main - country-name = VIR, location = Caribbean
+2023-02-12 02:13:01,507 [INFO] from Main$ in main - -----------------------completed  ------------------------

@@ -73,7 +73,12 @@ libraryDependencies ++= Seq(
   //"com.spotify"                 % "docker-client"                   % "8.9.0", //slow build, conflict with assembly
   "org.web3j"                     % "crypto"                          % "5.0.0",
   "com.typesafe.slick"            %% "slick"                          % "3.4.1",
-  "org.scalatest"                 % "scalatest_2.11"                  % "3.2.15"
+  // "org.scalatest"                 % "scalatest_2.11"                  % "3.2.15",
+  "org.scalatest"                 % "scalatest"                       % "3.2.15" % Test,
+  "org.scalatest"                 %% "scalatest-flatspec" % "3.2.15" % "test",
+  "org.scalatest"                 %% "scalatest-featurespec" % "3.2.15" % "test",
+  "org.scalatest"                 %% "scalatest-propspec" % "3.2.15" % "test",
+  "org.scalatest"                 %% "scalatest-refspec" % "3.2.15" % "test"
 )
 
 // sbt universal:packageZipTarball
