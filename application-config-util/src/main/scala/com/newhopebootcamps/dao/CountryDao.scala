@@ -27,7 +27,6 @@ class CountryDao extends Dao {
   }
 
   def quickFind(parameter: String) = {
-    log.info("Info: {} use thread {} to dispatch", "Calling read()", Thread.currentThread.getName)
     val query = "SELECT * from country WHERE continent = ? AND population < ?  ORDER BY ? DESC"
     /*  sqlinjection
         abc' or '1' = '1

@@ -8,7 +8,6 @@ import com.newhopebootcamps.util.{CommonUtils, CsvFileUtil}
 import org.slf4j.LoggerFactory
 
 import java.sql.SQLException
-import java.util
 
 object Main {
   private val logger = LoggerFactory.getLogger(this.getClass)
@@ -32,9 +31,9 @@ object Main {
       Thread.sleep(2000) // wait for 2000 millisecond
     }
 
-    logger.info("#..........................................................#")
-    logger.info("|................... Application Completed.................|")
-    logger.info("#..........................................................#")
+    logger.info("#----------------------------------------------------------#")
+    logger.info("|                    Application Completed.                |")
+    logger.info("#----------------------------------------------------------#")
   }
 
   def log = {

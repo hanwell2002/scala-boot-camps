@@ -4,7 +4,6 @@ import java.sql.{Connection, ResultSet, SQLException}
 
 class CityDao extends Dao {
   def findByQuery(query: String) = {
-    log.info("Info: {} use thread {} to dispatch", "Calling findByQuery() function", Thread.currentThread.getName)
     try {
       // create the statement, and run the query
       val statement = getConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)

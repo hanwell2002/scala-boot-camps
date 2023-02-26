@@ -4,7 +4,7 @@ import NativePackagerHelper._
 
 ThisBuild / version := "1.0.1"
 
-ThisBuild / scalaVersion := "2.13.10"
+ThisBuild / scalaVersion := "2.12.15"
 
 lazy val root = (project in file("."))
   .settings(
@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
     assembly / mainClass := Some("com.newhopebootcamps.Main")
   )
 
-// enablePlugins(AssemblyPlugin)
+enablePlugins(AssemblyPlugin)
 // enablePlugins(JavaAppPackaging, UniversalPlugin)
 // enablePlugins(JavaAppPackaging, UniversalPlugin, DockerPlugin, WindowsPlugin)  //DockerSpotifyClientPlugin
 enablePlugins(JavaAppPackaging, DockerPlugin)
@@ -73,8 +73,8 @@ libraryDependencies ++= Seq(
   //"com.spotify"                 % "docker-client"                   % "8.9.0", //slow build, conflict with assembly
   "org.web3j"                     % "crypto"                          % "5.0.0",
   "com.typesafe.slick"            %% "slick"                          % "3.4.1",
-  // "org.scalatest"                 % "scalatest_2.11"                  % "3.2.15",
-  "org.scalatest"                 % "scalatest"                       % "3.2.15" % Test,
+  // "org.scalatest"                 % "scalatest_2.12"                  % "3.2.15",
+  "org.scalatest"                 %% "scalatest"                       % "3.2.15" % Test,
   "org.scalatest"                 %% "scalatest-flatspec" % "3.2.15" % "test",
   "org.scalatest"                 %% "scalatest-featurespec" % "3.2.15" % "test",
   "org.scalatest"                 %% "scalatest-propspec" % "3.2.15" % "test",
