@@ -5,5 +5,5 @@
 **/*/.metals
 **/*/.vscode
 **/*/target
-
+**/*/out/*
 **/*/project/target
