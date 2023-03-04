@@ -1,6 +1,6 @@
 package com.newhopebootcamps.util
 
-import java.io.{BufferedWriter, File, FileWriter}
+import java.io.{BufferedWriter, File, FileInputStream, FileOutputStream, FileWriter, IOException}
 import scala.io.Source
 
 object TextFileUtils extends App {
@@ -20,6 +20,21 @@ object TextFileUtils extends App {
       |December, 12000.00, 10000.00, 2000.00
       |""".stripMargin
 
+  println("========================================================")
+  //  println(csv)
+  var multiline =
+    """January, 10000.00, 9000.00, 1000.00
+      #February, 11000.00, 9500.00, 1500.00
+      #March, 12000.00, 10000.00, 2000.00
+      #April, 10000.00, 9000.00, 1000.00
+      #May, 11000.00, 9500.00, 1500.00
+      #June, 12000.00, 10000.00, 2000.00
+      #""".stripMargin('#').replaceAll("\r\n", "@")
+  println("==========================2==============================")
+
+  //println(multiline)
+
+
   /*
   val FILE_NAME = "/opt/bootcamps/data/finance.csv"
 
@@ -27,7 +42,6 @@ object TextFileUtils extends App {
   readFile(FILE_NAME)
   */
   val text_file_name = "/opt/bootcamps/data/photo.txt"
-
   printOutFile(text_file_name)
 
   /**
@@ -75,9 +89,13 @@ object TextFileUtils extends App {
   def writeLinesToFile(filename: String, lines: Seq[String]): Unit = {
     val file = new File(filename)
     val bw = new BufferedWriter(new FileWriter(file))
+
     for (line <- lines) {
-      bw.write(line)
+//      bw.write(line)
+      bw.write(line, 3, 3)
+      bw.write("\n")
     }
+
     bw.close()
   }
 
@@ -96,8 +114,58 @@ object TextFileUtils extends App {
 
   def printOutFile(filename: String): Unit = {
     // val filename = "phonto.txt"
-    for (line <- Source.fromFile(filename).getLines) {
+    val allines = scala.io.Source.fromFile(filename).getLines
+    for (line <- allines) {
       println(line)
     }
   }
+
+  def printOutString(): Unit = {
+     val string = "/opt/bootcamps/data/photo.txt"
+//    val allines = scala.io.Source.fromString(string).getLines
+   val allines = scala.io.Source.fromFile(string).getLines
+    for (line <- allines) {
+      println(line)
+    }
+  }
+
+  printOutString()
+
+  val linesToFile = "/opt/bootcamps/data/linesToFile.txt"
+
+  val lines = Seq(
+    "abc,efg",
+    "123,567",
+    "GOOGL,COM"
+  )
+  writeLinesToFile(linesToFile, lines)
+
+
+  def readBinaryFile=
+    {
+      val jpg: String = "/opt/bootcamps/data/redis-logo"
+      var in = None: Option[FileInputStream]
+      var out = None: Option[FileOutputStream]
+      try {
+        in = Some(new FileInputStream(jpg+".jpg"))
+
+        out = Some(new FileOutputStream(jpg+".copy"+".jpg"))
+        var c = 0
+
+        c = in.get.read
+        while ( c != -1)
+        {
+          out.get.write(c)
+          c = in.get.read
+        }
+      } catch {
+        case e: IOException => e.printStackTrace
+      } finally {
+        println("entered finally ...")
+        if (in.isDefined) in.get.close
+        if (out.isDefined) out.get.close
+      }
+    }
+
+  readBinaryFile
 }
