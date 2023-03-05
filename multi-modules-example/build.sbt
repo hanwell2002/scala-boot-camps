@@ -18,10 +18,9 @@ lazy val commonSettings = Seq(
     baseDirectory.value / "target"
   },
   libraryDependencies ++= Seq(
-    "com.typesafe" % "config" % _typesafeConfigVersion,
-    "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-    "org.apache.logging.log4j" % "log4j-api" % "2.20.0",
-    "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
+    "ch.qos.logback" % "logback-classic" % _logbackVersion,
+    "org.apache.kafka" %% "kafka" % "3.4.0",
+    "org.apache.kafka" % "kafka-clients" % "3.4.0" % "provided",
   ),
   scalacOptions ++= Seq("-deprecation")
 )
@@ -31,17 +30,13 @@ lazy val appcommons = (project in file("appcommons"))
   .settings(
     name := "appcommons module",
     libraryDependencies ++= Seq(
-      "org.apache.kafka" %% "kafka" % "3.4.0",
-      "org.apache.kafka" % "kafka-clients" % "3.4.0" % "provided"
+//      "ch.qos.logback" % "logback-classic" % _logbackVersion,
     )
   )
 lazy val utility = (project in file("scm-utility"))
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-api" % "2.20.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime,
       "com.typesafe" % "config" % _typesafeConfigVersion
     ),
     scalacOptions --= Seq(
@@ -56,11 +51,7 @@ lazy val producer = (project in file("producer"))
     name := "producer-module",
     libraryDependencies ++= Seq(
       "com.google.code.gson" % "gson" % "2.10.1",
-      "org.apache.kafka" %% "kafka" % "3.4.0",
-      "org.apache.kafka" % "kafka-clients" % "3.4.0" % "provided",
-      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-api" % "2.20.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime,
+//      "ch.qos.logback" % "logback-classic" % _logbackVersion,
     ),
     assembly / mainClass := Some("com.newhopebootcamps.stream.KafkaScalaProducer")
   )
@@ -79,7 +70,7 @@ lazy val consumer = (project in file("consumer"))
 
 lazy val root = (project in file("."))
   .dependsOn(appcommons, utility, consumer, producer)
-  .aggregate(producer, consumer)
+  .aggregate(appcommons, producer, consumer)
   .settings(
     name := "multi-modules-example",
     hello := {
@@ -103,19 +94,16 @@ lazy val _scala_csvVersion = "1.3.10"
 lazy val _typesafeConfigVersion = "1.4.2"
 
 libraryDependencies ++= Seq(
-  "org.apache.kafka" %% "kafka" % "3.4.0" % "provided",
-  "org.apache.kafka" % "kafka-clients" % "3.4.0" % "provided",
-  "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-  "org.apache.logging.log4j" % "log4j-api" % "2.20.0",
-  "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime,
-  "com.typesafe" % "config" % _typesafeConfigVersion,
+//  "org.apache.kafka" %% "kafka" % "3.4.0" % "provided",
+//  "org.apache.kafka" % "kafka-clients" % "3.4.0" % "provided",
+//  "ch.qos.logback" % "logback-classic" % _logbackVersion,
   "commons-codec" % "commons-codec" % _commons_codecVersion,
   "com.github.tototoshi" %% "scala-csv" % _scala_csvVersion,
   "org.web3j" % "crypto" % "5.0.0",
   "com.typesafe.slick" %% "slick" % "3.4.1",
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % "test",
-  munit % Test
+  //munit % Test
 )
 
 scalacOptions ++= Seq("-deprecation")

@@ -1,32 +1,24 @@
 package com.newhopebootcamps.task
 
+import com.newhopebootcamps.loggin.LoggingUtil
 import com.newhopebootcamps.tools.ConsumerLab
-import org.apache.logging.log4j.Level
-import org.apache.logging.log4j.scala.Logging
+
+import java.util.logging.Level
+//import org.apache.logging.log4j.Level
+//import org.apache.logging.log4j.scala.Logging
 
 trait Greeting {
   lazy val greeting: String = "www.newhopebootcamps.com "
 }
 
 // object Log4jUsage extends Greeting with App with Logging {
-object Log4jUsage extends Greeting with App with Logging {
+object Log4jUsage extends Greeting with App with LoggingUtil {
 
-  someFuntion()
+  someFuntion
 
-  someFuntionWithLogLevel(Level.INFO)
-  someFuntionWithLogLevel(Level.DEBUG)
-  someFuntionWithLogLevel(Level.TRACE) //Won't show due to lower level than DEBUG defined in log4j config file.
-  someFuntionWithLogLevel(Level.WARN)
-  someFuntionWithLogLevel(Level.ERROR)
-
-  // callFunctionFormOtherModule
-
+  callFunctionFormOtherModule
   def someFuntion(): Unit = {
     logger.info("log info example!")
-  }
-
-  def someFuntionWithLogLevel(level: Level): Unit = {
-    logger(level, s"Log message with arbitrary level " + level.name())
   }
 
   def callFunctionFormOtherModule = {

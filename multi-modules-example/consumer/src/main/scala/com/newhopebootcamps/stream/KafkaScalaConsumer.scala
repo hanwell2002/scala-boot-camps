@@ -1,6 +1,6 @@
 package com.newhopebootcamps.stream
 
-import com.newhopebootcamps.loggin.AppLogging
+import com.newhopebootcamps.loggin.{AppLogging, LoggingUtil}
 
 import java.util.{Collections, Properties}
 import scala.collection.JavaConverters._
@@ -8,11 +8,11 @@ import org.apache.kafka.clients.consumer.{ConsumerRecords, KafkaConsumer}
 
 import java.time.Duration
 
-object KafkaScalaConsumer extends App with AppLogging with KafkaSettings {
-  info("### Kafka Consumer started ...... ")
+object KafkaScalaConsumer extends App with LoggingUtil with KafkaSettings {
+  logger.info("### Kafka Consumer started ...... ")
 
-  info("the_server_port= " + the_server_port)
-  info("the topic= " + the_topic)
+  logger.info("the_server_port= " + the_server_port)
+  logger.info("the topic= " + the_topic)
   val props = new Properties()
   //  props.put("bootstrap.servers", "192.168.214.130:9092")
   props.put("bootstrap.servers", the_server_port)
@@ -31,7 +31,7 @@ object KafkaScalaConsumer extends App with AppLogging with KafkaSettings {
   while (true) {
     val records: ConsumerRecords[String, String] = consumer.poll(Duration.ofMillis(100))
     for (record <- records.asScala) {
-      info(record)
+      logger.info(record)
     }
   }
   */
@@ -43,10 +43,10 @@ object KafkaScalaConsumer extends App with AppLogging with KafkaSettings {
   while (true) {
     val records = consumer.poll(Duration.ofMillis(100)).asScala
     for (record <- records) {
-      info(s"Message: (key: ${record.key()} with value: ${record.value()} @ partition ${record.partition()} @ offset ${record.offset()}")
-      // info(record)
+      logger.info(s"Message: (key: ${record.key()} with value: ${record.value()} @ partition ${record.partition()} @ offset ${record.offset()}")
+      // logger.info(record)
     }
   }
 
-  info("Kafka consumer ended ......")
+  logger.info("Kafka consumer ended ......")
 }
