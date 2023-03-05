@@ -20,7 +20,9 @@ sbt "project consumer" run
 
 # 5. run Main
 sbt "runMain com.newhopebootcamps.application.Main Consumer"
+
 sbt "runMain com.newhopebootcamps.application.Main Producer"
+
 sbt "runMain com.newhopebootcamps.task.Log4jUsage"
 
 
