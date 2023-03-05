@@ -1,0 +1,51 @@
+ID,City,Code,Province,Population
+1810,MontrÃ©al,CAN,QuÃ©bec,1016376
+1811,Calgary,CAN,Alberta,768082
+1812,Toronto,CAN,Ontario,688275
+1813,North York,CAN,Ontario,622632
+1814,Winnipeg,CAN,Manitoba,618477
+1815,Edmonton,CAN,Alberta,616306
+1816,Mississauga,CAN,Ontario,608072
+1817,Scarborough,CAN,Ontario,594501
+1818,Vancouver,CAN,British Colombia,514008
+1819,Etobicoke,CAN,Ontario,348845
+1820,London,CAN,Ontario,339917
+1821,Hamilton,CAN,Ontario,335614
+1822,Ottawa,CAN,Ontario,335277
+1823,Laval,CAN,QuÃ©bec,330393
+1824,Surrey,CAN,British Colombia,304477
+1825,Brampton,CAN,Ontario,296711
+1826,Windsor,CAN,Ontario,207588
+1827,Saskatoon,CAN,Saskatchewan,193647
+1828,Kitchener,CAN,Ontario,189959
+1829,Markham,CAN,Ontario,189098
+1830,Regina,CAN,Saskatchewan,180400
+1831,Burnaby,CAN,British Colombia,179209
+1832,QuÃ©bec,CAN,QuÃ©bec,167264
+1833,York,CAN,Ontario,154980
+1834,Richmond,CAN,British Colombia,148867
+1835,Vaughan,CAN,Ontario,147889
+1836,Burlington,CAN,Ontario,145150
+1837,Oshawa,CAN,Ontario,140173
+1838,Oakville,CAN,Ontario,139192
+1839,Saint Catharines,CAN,Ontario,136216
+1840,Longueuil,CAN,QuÃ©bec,127977
+1841,Richmond Hill,CAN,Ontario,116428
+1842,Thunder Bay,CAN,Ontario,115913
+1843,Nepean,CAN,Ontario,115100
+1844,Cape Breton,CAN,Nova Scotia,114733
+1845,East York,CAN,Ontario,114034
+1846,Halifax,CAN,Nova Scotia,113910
+1847,Cambridge,CAN,Ontario,109186
+1848,Gloucester,CAN,Ontario,107314
+1849,Abbotsford,CAN,British Colombia,105403
+1850,Guelph,CAN,Ontario,103593
+1851,Saint JohnÂ´s,CAN,Newfoundland,101936
+1852,Coquitlam,CAN,British Colombia,101820
+1853,Saanich,CAN,British Colombia,101388
+1854,Gatineau,CAN,QuÃ©bec,100702
+1855,Delta,CAN,British Colombia,95411
+1856,Sudbury,CAN,Ontario,92686
+1857,Kelowna,CAN,British Colombia,89442
+1858,Barrie,CAN,Ontario,89269
+1000000,Ford,CAN,Ontario,5000
