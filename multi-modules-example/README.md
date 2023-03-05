@@ -28,4 +28,12 @@ sbt "runMain com.newhopebootcamps.task.Log4jUsage"
 
 ## generic command line template
 sbt "project name" "run arg1 arg2"
+
 sbt Producer/run arg1 arg2
+
+# start Producer
+java -jar multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Producer
+
+# start Consumer
+java -jar multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Consumer
+
