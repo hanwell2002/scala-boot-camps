@@ -1,6 +1,6 @@
 package com.newhopebootcamps.task
 
-import com.newhopebootcamps.loggin.LoggingUtil
+import com.newhopebootcamps.logging.LoggingUtil
 import com.newhopebootcamps.tools.ConsumerLab
 
 import java.util.logging.Level

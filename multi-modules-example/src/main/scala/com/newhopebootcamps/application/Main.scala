@@ -1,6 +1,6 @@
 package com.newhopebootcamps.application
 
-import com.newhopebootcamps.loggin.LoggingUtil
+import com.newhopebootcamps.logging.LoggingUtil
 //import org.apache.logging.log4j.scala.Logging
 
 object Main extends App with LoggingUtil {

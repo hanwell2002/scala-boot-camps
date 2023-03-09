@@ -1,9 +1,9 @@
-package utility.loggin
+package utility.logging
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-trait LoggingTool {
+class LogTools {
   val ts_format = "yyyyMMdd HH:mm:ss SSS"
 
   def info(msg: String) = {

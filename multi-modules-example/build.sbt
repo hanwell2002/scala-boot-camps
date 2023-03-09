@@ -13,6 +13,13 @@ ThisBuild / assemblyMergeStrategy := {
 lazy val hello = taskKey[Unit]("An hello task")
 lazy val taskDemo = taskKey[Unit]("Just print out a photo")
 
+taskDemo := {
+  println("Task demo!")
+  for (line <- scala.io.Source.fromFile("/opt/bootcamps/data/photo.txt").getLines) {
+    println(line)
+  }
+}
+
 lazy val commonSettings = Seq(
   target := {
     baseDirectory.value / "target"
@@ -45,13 +52,12 @@ lazy val utility = (project in file("scm-utility"))
   )
 
 lazy val producer = (project in file("producer"))
-  .dependsOn(appcommons, utility)
+  .dependsOn(appcommons)
   .settings(commonSettings)
   .settings(
     name := "producer-module",
     libraryDependencies ++= Seq(
       "com.google.code.gson" % "gson" % "2.10.1",
-//      "ch.qos.logback" % "logback-classic" % _logbackVersion,
     ),
     assembly / mainClass := Some("com.newhopebootcamps.stream.KafkaScalaProducer")
   )
@@ -73,15 +79,11 @@ lazy val root = (project in file("."))
   .aggregate(appcommons, producer, consumer)
   .settings(
     name := "multi-modules-example",
+
     hello := {
-      println("Hello!")
+      println("Hello! Task example")  //scalac Name.class
     },
-    taskDemo := {
-      println("Task demo!")
-      for (line <- scala.io.Source.fromFile("/opt/bootcamps/data/photo.txt").getLines) {
-        println(line)
-      }
-    },
+
     assembly / assemblyJarName := "multi-module-assembly-fatjar-1.0.jar",
     assembly / mainClass := Some("com.newhopebootcamps.application.Main"),
   )
@@ -108,5 +110,6 @@ enablePlugins(AssemblyPlugin)
 assembly / mainClass := Some("com.newhopebootcamps.application.Main")
 
 // java -cp multi-modules-example.jar com.newhopebootcamps.application.Main Producer Consumer
-// set the main class for the main 'sbt run' task
-// mainClass in(Compile, run) := Some("com.newhopebootcamps.application.Main")
+// java -jar target/scala-2.12/multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Producer
+// - open another Terminal run:
+// java -jar target/scala-2.12/multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Consumer

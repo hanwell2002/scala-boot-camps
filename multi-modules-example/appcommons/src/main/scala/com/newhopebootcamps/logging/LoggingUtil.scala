@@ -1,4 +1,4 @@
-package com.newhopebootcamps.loggin
+package com.newhopebootcamps.logging
 
 import org.slf4j.LoggerFactory;
 trait LoggingUtil {

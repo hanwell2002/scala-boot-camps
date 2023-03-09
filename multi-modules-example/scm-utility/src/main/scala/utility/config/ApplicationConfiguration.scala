@@ -21,6 +21,8 @@ object ApplicationConfiguration {
   var kafka_topic_json = ""
   var kafka_batch_size = ""
 
+  var host = ""
+  var port = ""
   private val loaded = initialize
 
   def initialize(): Boolean = {
@@ -47,6 +49,8 @@ object ApplicationConfiguration {
       kafka_topic_json = conf.getString("kafka.topic-name-json")
       kafka_batch_size = conf.getString("kafka.batch-size")
 
+      host = conf.getString("kafka.host")
+      port = conf.getString("kafka.port")
 
       val appName = conf.getString("appinfo.name")
       println(s"appName=$appName")
