@@ -37,3 +37,4 @@ java -jar multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.
 # start Consumer
 java -jar multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Consumer
 
+http://www.baremetalsoft.com/baretail/
