@@ -47,7 +47,6 @@ object KafkaScalaConsumer extends App with LoggingUtil with KafkaSettings {
   consumer.subscribe(topics.asJava)
 
   while (true) {
-    val records = consumer.poll(100).asScala
     val records = consumer.poll(Duration.ofMillis(100)).asScala
     for (record <- records) {
       logger.info(s"Message: (key: ${record.key()} with value: ${record.value()} @ partition ${record.partition()} @ offset ${record.offset()}")
