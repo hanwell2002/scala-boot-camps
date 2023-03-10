@@ -1,6 +1,6 @@
 package utility.config
 
-import utility.config.ApplicationConfiguration.kafka_url
+import utility.config.AppConfig.kafka_url
 
 import com.typesafe.config.ConfigFactory
 import java.io.File
@@ -21,6 +21,9 @@ object AppConf {
   val password = conf.getString("database_postgres.password")
 
   val kafka_url = conf.getString("kafka.url")
+  val kafka_host = conf.getString("kafka.host")
+  val kafka_port = conf.getString("kafka.port")
+
   val kafka_client_id = conf.getString("kafka.client-id")
 
   val kafka_schema = conf.getString("kafka.schema-registry")

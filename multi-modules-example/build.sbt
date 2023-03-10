@@ -1,4 +1,5 @@
 import Dependencies._
+// import NativePackagerHelper._
 
 ThisBuild / scalaVersion := "2.12.15"
 ThisBuild / version := "1.0"
@@ -52,7 +53,7 @@ lazy val utility = (project in file("scm-utility"))
   )
 
 lazy val producer = (project in file("producer"))
-  .dependsOn(appcommons)
+  .dependsOn(appcommons, utility)
   .settings(commonSettings)
   .settings(
     name := "producer-module",
@@ -97,7 +98,6 @@ lazy val _typesafeConfigVersion = "1.4.2"
 libraryDependencies ++= Seq(
   "commons-codec" % "commons-codec" % _commons_codecVersion,
   "com.github.tototoshi" %% "scala-csv" % _scala_csvVersion,
-  "org.web3j" % "crypto" % "5.0.0",
   "com.typesafe.slick" %% "slick" % "3.4.1",
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % "test",
@@ -105,11 +105,16 @@ libraryDependencies ++= Seq(
 
 scalacOptions ++= Seq("-deprecation")
 
-enablePlugins(AssemblyPlugin)
+// enablePlugins(AssemblyPlugin)
+enablePlugins(JavaAppPackaging, UniversalPlugin)
 
 assembly / mainClass := Some("com.newhopebootcamps.application.Main")
+
+// sbt universal:packageZipTarball
+// sbt universal:packageBin
 
 // java -cp multi-modules-example.jar com.newhopebootcamps.application.Main Producer Consumer
 // java -jar target/scala-2.12/multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Producer
 // - open another Terminal run:
 // java -jar target/scala-2.12/multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.Main Consumer
+

@@ -7,34 +7,33 @@ import com.google.gson.Gson
 import com.newhopebootcamps.logging.LoggingUtil
 import utility.config._
 
-object KafkaScalaProducer extends App with LoggingUtil with KafkaSettings {
-
+object KafkaScalaProducer extends App with LoggingUtil {
   logger.info(args(0))
 
   logger.info("### Kafka Producer Started ......")
   val props = new Properties()
-//  val url = "192.168.214.130:9092"
-  val url = ApplicationConfiguration.kafka_url
-  val clientId = ApplicationConfiguration.kafka_client_id
+  //  val url = "192.168.214.130:9092"
+  val url = AppConfig.kafka_url
+  val clientId = AppConfig.kafka_client_id
+
   logger.info(s"Kafka Server: url: $url,  clientId: $clientId")
 
-  val host = ApplicationConfiguration.host
-  val port = ApplicationConfiguration.port
+  val host = AppConfig.kafka_host
+  val port = AppConfig.kafka_port
 
-
-props.put("bootstrap.servers", url)  // "192.168.214.130:9092"
-//  props.put("bootstrap.servers", host + ":" + port)  // "192.168.214.130:9092"
+  // props.put("bootstrap.servers", url) // "192.168.214.130:9092"
+  props.put("bootstrap.servers", host + ":" + port) // "192.168.214.130:9092"
   props.put("client.id", clientId)
   props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   props.put("acks", "all")
   props.put("retries", "0")
-  props.put("batch.size", ApplicationConfiguration.kafka_batch_size)
+  props.put("batch.size", AppConfig.kafka_batch_size)
   props.put("linger.ms", "1")
   props.put("buffer.memory", "33554432")
 
   val producer: KafkaProducer[Nothing, String] = new KafkaProducer[Nothing, String](props)
-  val topic = ApplicationConfiguration.kafka_topic_trade
+  val topic = AppConfig.kafka_topic_trade
 
   logger.info(s"Sending Records to Kafka Topic: [$topic]")
   val gson = new Gson
@@ -55,7 +54,7 @@ props.put("bootstrap.servers", url)  // "192.168.214.130:9092"
     logger.info(s"Sending in String ####> $record")
     producer.send(record)
     // ---------example-2. send message with Json format to topic boot.camps.json----------
-    val json_record: ProducerRecord[Nothing, String] = new ProducerRecord(ApplicationConfiguration.kafka_topic_json, gson.toJson(order))
+    val json_record: ProducerRecord[Nothing, String] = new ProducerRecord(AppConfig.kafka_topic_json, gson.toJson(order))
     producer.send(json_record)
     logger.info(s"Sent in Json ==> $json_record")
   }

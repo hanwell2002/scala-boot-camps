@@ -6,7 +6,7 @@ import utility.encryption.EncryptionUtil
 import java.io.File
 import scala.util.control.ControlThrowable
 
-object ApplicationConfiguration {
+object AppConfig {
   var url: String = ""
   var username: String = ""
   var password: String = ""
@@ -15,14 +15,14 @@ object ApplicationConfiguration {
 
   var kafka_client_id = ""
   var kafka_url = ""
+  var kafka_host = ""
+  var kafka_port = ""
 
   var kafka_schema = ""
   var kafka_topic_trade = ""
   var kafka_topic_json = ""
-  var kafka_batch_size = ""
+  var kafka_batch_size : Int = 0
 
-  var host = ""
-  var port = ""
   private val loaded = initialize
 
   def initialize(): Boolean = {
@@ -47,10 +47,11 @@ object ApplicationConfiguration {
       kafka_schema = conf.getString("kafka.schema-registry")
       kafka_topic_trade = conf.getString("kafka.topic-name-trade")
       kafka_topic_json = conf.getString("kafka.topic-name-json")
-      kafka_batch_size = conf.getString("kafka.batch-size")
+      kafka_batch_size = conf.getInt("kafka.batch-size")
 
-      host = conf.getString("kafka.host")
-      port = conf.getString("kafka.port")
+      kafka_host = conf.getString("kafka.host")
+      kafka_port = conf.getString("kafka.port")
+      println(s"Kafka Server: host=$kafka_host, port=$kafka_port")
 
       val appName = conf.getString("appinfo.name")
       println(s"appName=$appName")

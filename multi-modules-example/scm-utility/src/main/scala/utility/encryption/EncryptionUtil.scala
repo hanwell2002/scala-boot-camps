@@ -1,14 +1,14 @@
 package utility.encryption
 
-import utility.config.ApplicationConfiguration
+import utility.config.AppConfig
 
 import java.util.Base64
 import javax.crypto.Cipher
 import javax.crypto.spec.{IvParameterSpec, SecretKeySpec}
 
 object EncryptionUtil {
-  val key = ApplicationConfiguration.key
-  val initVector = ApplicationConfiguration.initVector
+  val key = AppConfig.key
+  val initVector = AppConfig.initVector
   val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
 
   def decrypt(text: String): String = {

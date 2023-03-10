@@ -5,7 +5,7 @@ import utility.logging._
 object LoggingToolTest extends  App with LoggingTool{
 
   //with trait
-  info("Hollo!")
+  info("Holla!")
 
 
   //singleton object

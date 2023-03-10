@@ -1,12 +1,13 @@
 # generate a sbt project
+
 sbt new scala/scala-seed.g8
 
-# check Ubuntu firewall status
+
+#check Ubuntu firewall status
 sudo ufw status verbose
 
 # 1. Start the ZooKeeper service
    bin/zookeeper-server-start.sh config/zookeeper.properties
-
 # 2. Start the Kafka broker service
     #open another terminal
    bin/kafka-server-start.sh config/server.properties
@@ -38,7 +39,10 @@ java -jar multi-module-assembly-fatjar-1.0.jar com.newhopebootcamps.application.
 
 http://www.baremetalsoft.com/baretail/
 
+# specify config
 
-# VM params for config examples:
-//-Dappinfo.config=/opt/bootcamps/config/application.cfg
-//-DAPPLICATION_EXTRA_CONFIG=/opt/bootcamps/config/application.cfg
+
+$ sbt "start -Dconfig.resource=/optproduction.conf"
+Also, if you need to specify the port number, make sure it comes after the config option, otherwise it will be ignored:
+
+$ sbt "start -Dconfig.resource=production.conf 9001"
