@@ -4,6 +4,8 @@ abstract class Person {
   var firstName: String
   var lastName: String
   var address: String
+
+  override def toString:String = s"$firstName, $lastName, $address"
 }
 
 /*
@@ -13,12 +15,13 @@ case class Contractor(val firstName: String,val lastName: String, val address: S
   extends Person
 */
 
-
 class Employee extends Person {
   override var firstName: String = ""
   override var lastName: String = ""
   override var address: String = ""
   var salary: Double = 0.0
+
+  override def toString:String = s"$firstName, $lastName, $address, $salary"
 }
 
 class Manager(val DepartName: String) extends Employee {

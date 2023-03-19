@@ -2,9 +2,7 @@ package com.newhopebootcamps.learn.polymorphic
 
 import com.newhopebootcamps.model._
 
-
 class ImmutableBox[+A](val content: A)
-
 
 object CovarianceExample extends  App{
 
