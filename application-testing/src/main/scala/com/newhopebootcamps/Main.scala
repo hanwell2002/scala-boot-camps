@@ -1,9 +1,10 @@
 package com.newhopebootcamps
 
 import com.newhopebootcamps.dao.{CityDao, CountryDao, TraderDao}
+//import com.newhopebootcamps.dao._
+
 import com.newhopebootcamps.encryption.CubeCalculator
 import com.newhopebootcamps.entity.Trader
-import com.newhopebootcamps.helper.CsvDemoHelper
 import com.newhopebootcamps.service.EmailService
 import com.newhopebootcamps.util.{CommonUtils, CsvFileUtil}
 import org.slf4j.LoggerFactory
@@ -62,9 +63,24 @@ object Main {
 
     try {
       dao.createTable() //only run once, other wise will throw out exception.
+
       dao.addOne
-      dao.batchAdd(List(new Trader(2, "Joe", "Joe.Biden@gmail.com", "USA", "password123"), new Trader(3, "Bush", "Bush@gmail.com", "US", "password123")))
+      dao.findAll()
+
+      val trader = new Trader("ChatGPT_AI", "OpenAI@gmail.com", "USA", "pa55w0rld")
+      dao.addTrader(trader)
+      dao.findAll()
+
+//     dao.batchAdd(List(new Trader(3, "Joe", "Joe.Biden@gmail.com", "USA", "password123"), new Trader(4, "Bush", "Bush@gmail.com", "US", "password123")))
+      dao.batchAdd(
+        List(
+          new Trader( "Joe", "Joe.Biden@gmail.com", "USA", "password123"),
+          new Trader( "Bush", "Bush@gmail.com", "US", "passw0rd456")))
+
       dao.update
+      dao.findAll()
+
+      dao.delete(1)
       dao.findAll()
 
     } catch {

@@ -13,4 +13,5 @@ object DbServer { // Simulating a database server
   def removeDb(name: String) {
     databases.remove(name)
   }
+
 }

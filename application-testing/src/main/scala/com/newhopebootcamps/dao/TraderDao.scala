@@ -13,30 +13,41 @@ class TraderDao extends Dao {
   val createTableSQL =
     """
       |CREATE TABLE traders (
-      |  ID INT PRIMARY KEY
+      |  ID PRIMARY KEY
       |, NAME TEXT
       |, EMAIL VARCHAR(50)
       |, COUNTRY VARCHAR(50)
       |, PASSWORD VARCHAR(50)
       |)
       """.stripMargin
-
+  val createTableAutoID =
+    """
+      |DROP TABLE IF EXISTS traders;
+      |CREATE TABLE traders (
+      |  ID SERIAL PRIMARY KEY
+      |, NAME TEXT
+      |, EMAIL VARCHAR(50) UNIQUE NOT NULL
+      |, COUNTRY VARCHAR(50) NOT NULL
+      |, PASSWORD VARCHAR(50) NOT NULL
+      |)
+    """.stripMargin
 
   private val INSERT_USERS_SQL = "INSERT INTO traders" + "  (id, name, email, country, password) VALUES " + " (?, ?, ?, ?, ?);"
+  private val INSERT_USERS_AUTO_ID = "INSERT INTO traders" + "  (name, email, country, password) VALUES " + " (?, ?, ?, ?)"
   private val QUERY = "select id,name,email,country,password from Traders where id =?"
-  private val SELECT_ALL_QUERY = "select * from traders"
+  private val SELECT_ALL_QUERY = "SELECT * FROM traders ORDER BY ID"
   private val DELETE_USERS_SQL = "delete from traders where id = ?;"
 
   @throws[SQLException]
   def createTable(): Unit = {
-    logger.info(createTableSQL)
+    logger.info(createTableAutoID)
     // Step 1: Establishing a Connection
     val connection = getConnection
     // Step 2:Create a statement using connection object
     val statement = connection.createStatement
     try
       // Step 3: Execute the query or update query
-      statement.execute(createTableSQL)
+      statement.execute(createTableAutoID)
     catch {
       case e: SQLException => writeSqlExceptionToLog(e)
     } finally {
@@ -48,17 +59,56 @@ class TraderDao extends Dao {
 
   @throws[SQLException]
   def addOne: Unit = {
-    logger.info(INSERT_USERS_SQL)
+//    logger.info(INSERT_USERS_SQL)
+    logger.info(INSERT_USERS_AUTO_ID)
     // Step 1: Establishing a Connection
     val connection = getConnection
     // Step 2:Create a statement using connection object
-    val preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)
+//    val preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)
+    val preparedStatement = connection.prepareStatement(INSERT_USERS_AUTO_ID)
     try {
-      preparedStatement.setInt(1, 1)
+/*      preparedStatement.setInt(1, 10)
       preparedStatement.setString(2, "ChatGPTony")
       preparedStatement.setString(3, "OpenAI@gmail.com")
       preparedStatement.setString(4, "USA")
-      preparedStatement.setString(5, "USDD")
+      preparedStatement.setString(5, "USDD")*/
+
+      preparedStatement.setString(1, "ChatGPTony")
+      preparedStatement.setString(2, "OpenAI@gmail.com")
+      preparedStatement.setString(3, "USA")
+      preparedStatement.setString(4, "USDD")
+
+      println(preparedStatement)
+      // Step 3: Execute the query or update query
+      //preparedStatement.executeQuery()
+
+     val affected = preparedStatement.executeUpdate
+
+      println("Affected = " + affected)
+
+
+    } catch {
+      case e: SQLException => writeSqlExceptionToLog(e)
+    } finally {
+      if (connection != null) connection.close
+      if (preparedStatement != null) preparedStatement.close
+    }
+
+  }
+
+
+    @throws[SQLException]
+  def addTrader(trader: Trader): Unit = {
+    logger.info(INSERT_USERS_AUTO_ID)
+    // Step 1: Establishing a Connection
+    val connection = getConnection
+    // Step 2:Create a statement using connection object
+    val preparedStatement = connection.prepareStatement(INSERT_USERS_AUTO_ID)
+    try {
+      preparedStatement.setString(1, trader.name)
+      preparedStatement.setString(2, trader.email)
+      preparedStatement.setString(3, trader.country)
+      preparedStatement.setString(4, trader.password)
       println(preparedStatement)
       // Step 3: Execute the query or update query
       preparedStatement.executeUpdate
@@ -77,21 +127,26 @@ class TraderDao extends Dao {
   @throws[SQLException]
   def batchAdd(list: List[Trader]): Unit = {
     val conn = getConnection
-    val statement = conn.prepareStatement(INSERT_USERS_SQL)
+//    val statement = conn.prepareStatement(INSERT_USERS_SQL)
+    val statement = conn.prepareStatement(INSERT_USERS_AUTO_ID)
     try {
       var count = 0
       for (user <- list) {
-        statement.setInt(1, user.id)
+/*        statement.setInt(1, 0)
         statement.setString(2, user.name)
         statement.setString(3, user.email)
         statement.setString(4, user.country)
-        statement.setString(5, user.password)
-
+        statement.setString(5, user.password)*/
+        statement.setString(1, user.name)
+        statement.setString(2, user.email)
+        statement.setString(3, user.country)
+        statement.setString(4, user.password)
         statement.addBatch
 
         count += 1
         // execute every 100 rows or less
-        if (count % 100 == 0 || count == list.size) statement.executeBatch
+        if (count % 100 == 0 || count == list.size)
+          statement.executeBatch
 
       }
     } catch {
@@ -105,8 +160,7 @@ class TraderDao extends Dao {
 
   @throws[SQLException]
   def findById(id: Int): Unit = {
-    // using try-with-resources to avoid closing resources (boiler plate
-    // code)
+    // using try-with-resources to avoid closing resources (boiler plate code)
     // Step 1: Establishing a Connection
     val connection = getConnection
     // Step 2:Create a statement using connection object
@@ -135,7 +189,9 @@ class TraderDao extends Dao {
 
     @throws[SQLException]
   def findAll(): Unit = {
-    // using try-with-resources to avoid closing resources (boiler plate
+      logger.info("---list all trades---")
+
+      // using try-with-resources to avoid closing resources (boiler plate
     // code)
     // Step 1: Establishing a Connection
     val connection = getConnection
@@ -175,7 +231,8 @@ class TraderDao extends Dao {
       preparedStatement.setString(1, "Joe")
       preparedStatement.setInt(2, 2)
       // Step 3: Execute the query or update query
-      preparedStatement.executeUpdate
+      val affected = preparedStatement.executeUpdate
+
     } catch {
       case e: SQLException => writeSqlExceptionToLog(e)
     } finally {
@@ -186,16 +243,17 @@ class TraderDao extends Dao {
   }
 
   @throws[SQLException]
-  def delete(): Unit = {
+  def delete(id: Int): Unit = {
     logger.info(DELETE_USERS_SQL)
     // Step 1: Establishing a Connection
     val connection = getConnection
     // Step 2:Create a statement using connection object
     val preparedStatement = connection.prepareStatement(DELETE_USERS_SQL)
     try {
-      preparedStatement.setInt(1, 1)
+      preparedStatement.setInt(1, id)
       // Step 3: Execute the query or update query
       val result = preparedStatement.executeUpdate
+
       logger.info("Number of records affected :: " + result)
     } catch {
       case e: SQLException => writeSqlExceptionToLog(e)
